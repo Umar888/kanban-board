@@ -108,7 +108,7 @@ class CountTimerController extends ChangeNotifier {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _duration = Duration(seconds: _duration.inSeconds + 1);
       if (onTimeUpdate != null) {
-        if(_duration.inSeconds % 10 == 0){
+        if(_duration.inSeconds % 5 == 0){
           onTimeUpdate10Sec();
         }
         onTimeUpdate!(_duration); // Call the callback function

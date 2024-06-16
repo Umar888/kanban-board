@@ -112,7 +112,7 @@
                   "delete_all_tasks": "Delete All Tasks",
                   "delete_all_tasks_confirmation": "Are you sure, you want to delete all tasks?",
                   "check_internet": "An error occurred. Please check you internet connection",
-"no_tasks_add_yet": "No tasks add yet"
+"no_tasks_add_yet": "No tasks added yet"
 
 
 }
