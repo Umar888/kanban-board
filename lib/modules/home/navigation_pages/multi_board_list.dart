@@ -3,18 +3,17 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:kanban_board/helpers/internet/internet_cubit.dart';
 import 'package:kanban_board/modules/home/models/tasks_model.dart';
-import 'package:kanban_board/modules/home/screens/home_detail.dart';
 import 'package:kanban_board/services/extensions/string_extension.dart';
 import 'package:pull_down_button/pull_down_button.dart';
-import 'constant/color.dart';
-import 'constant/string_constants.dart';
-import 'intermediate_widget/kanban_board_ui/kanban_board_ui.dart';
-import 'modules/home/bloc/home_bloc.dart';
-import 'modules/home/widgets/task_card_widget.dart';
-import 'modules/home/widgets/task_item.dart';
+import '../../../constant/color.dart';
+import '../../../constant/string_constants.dart';
+import '../../../intermediate_widget/kanban_board_ui/kanban_board_ui.dart';
+import '../bloc/home_bloc.dart';
+import '../widgets/task_card_widget.dart';
+import '../widgets/task_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -28,17 +27,22 @@ class MultiBoardList extends StatefulWidget {
 
 class _MultiBoardListState extends State<MultiBoardList> {
   late AppFlowyBoardController controller;
-
   late AppFlowyBoardScrollController boardController;
   late HomeBloc homeBloc;
-  AppFlowyGroupData<dynamic> todoGroup = AppFlowyGroupData(id: "To Do", name: "To Do", items: []);
-  AppFlowyGroupData<dynamic> progressGroup = AppFlowyGroupData(id: "In Progress", name: "In Progress" ,items: []);
-  AppFlowyGroupData<dynamic> doneGroup = AppFlowyGroupData(id: "Done", name: "Done", items: []);
+  late AppLocalizations appLocalizations;
+
+  late AppFlowyGroupData<dynamic> todoGroup = AppFlowyGroupData(id: "To Do", name: "To Do", items: []);
+  late AppFlowyGroupData<dynamic> progressGroup = AppFlowyGroupData(id: "In Progress", name: AppLocalizations.of(context)!.inProgress ,items: []);
+  late AppFlowyGroupData<dynamic> doneGroup= AppFlowyGroupData(id: "Done", name: AppLocalizations.of(context)!.done, items: []);
 
   @override
   void initState() {
     super.initState();
     boardController = AppFlowyBoardScrollController();
+   // todoGroup = AppFlowyGroupData(id: "To Do", name: AppLocalizations.of(context)!.todos, items: []);
+   // progressGroup = AppFlowyGroupData(id: "In Progress", name: AppLocalizations.of(context)!.inProgress ,items: []);
+   // doneGroup = AppFlowyGroupData(id: "Done", name: AppLocalizations.of(context)!.done, items: []);
+
     homeBloc = context.read<HomeBloc>();
     homeBloc.add(HomeEvent.fetchAllTasks(requiredReload: true,internetState: context.read<InternetCubit>().state));
 
@@ -99,7 +103,10 @@ class _MultiBoardListState extends State<MultiBoardList> {
     );
 
   }
-  TasksTags? stringToTasksTag(String tag) {
+
+  TasksTags? stringToTasksTag(String tag, BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     switch (tag.toLowerCase()) {
       case 'fun':
         return TasksTags.fun;
@@ -179,7 +186,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                             labels: taskModel.labels??[],
                             seconds: taskModel.labels![(taskModel.labels??[]).length - 2].replaceAll("ztimer-", "").isNumeric()?int.parse(taskModel.labels![(taskModel.labels??[]).length - 2].replaceAll("ztimer-", "")):0,
                             isPlaying: taskModel.labels!.last.contains("play"),
-                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag))
+                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag,context))
                                 .where((tag) => tag != null)
                                 .cast<TasksTags>()
                                 .toList(),
@@ -204,7 +211,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                             subtitle: taskModel.description??"",
                             groupId: taskModel.labels!.first,
                             totalComments: taskModel.commentCount??0,
-                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag))
+                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag,context))
                                 .where((tag) => tag != null)
                                 .cast<TasksTags>()
                                 .toList(),
@@ -229,7 +236,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                             groupId: taskModel.labels!.first,
                             subtitle: taskModel.description??"",
                             totalComments: taskModel.commentCount??0,
-                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag))
+                            tag: (taskModel.labels??[]) .map((tag) => stringToTasksTag(tag,context))
                                 .where((tag) => tag != null)
                                 .cast<TasksTags>()
                                 .toList(),
@@ -246,9 +253,9 @@ class _MultiBoardListState extends State<MultiBoardList> {
                   }
                 }
 
-                todoGroup = AppFlowyGroupData(id: "To Do", name: "To Do", items: todoItems);
-                progressGroup = AppFlowyGroupData(id: "In Progress", name: "In Progress", items: progressItems);
-                doneGroup = AppFlowyGroupData(id: "Done", name: "Done", items: doneItems);
+                todoGroup = AppFlowyGroupData(id: "To Do", name: AppLocalizations.of(context)!.todos, items: todoItems);
+                progressGroup = AppFlowyGroupData(id: "In Progress", name: AppLocalizations.of(context)!.inProgress, items: progressItems);
+                doneGroup = AppFlowyGroupData(id: "Done", name: AppLocalizations.of(context)!.done, items: doneItems);
 
                 controller.addGroup(todoGroup);
                 controller.addGroup(progressGroup);
@@ -310,7 +317,9 @@ class _MultiBoardListState extends State<MultiBoardList> {
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              columnData.id,
+                              columnData.id == "To Do"?AppLocalizations.of(context)!.todos:
+                              columnData.id == "In Progress"?AppLocalizations.of(context)!.inProgress:
+                              AppLocalizations.of(context)!.done,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
@@ -321,7 +330,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                             PullDownButton(
                               itemBuilder: (context) => [
                                 PullDownMenuItem(
-                                  title: 'Sort By Name (Z-A)',
+                                  title: AppLocalizations.of(context)!.sort_by_name_za,
                                   icon: CupertinoIcons.up_arrow,
                                   onTap: () {
                                     homeBloc.add(HomeEvent.sortByNameDescending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));
@@ -329,7 +338,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                                 ),
                                 const PullDownMenuDivider(),
                                 PullDownMenuItem(
-                                  title: 'Sort By Name (A-Z)',
+                                  title: AppLocalizations.of(context)!.sort_by_name_az,
                                   icon: CupertinoIcons.down_arrow,
                                   onTap: () {
                                     homeBloc.add( HomeEvent.sortByNameAscending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));
@@ -337,7 +346,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                                 ),
                                 const PullDownMenuDivider(),
                                 PullDownMenuItem(
-                                  title: 'Sort By Date (Newest)',
+                                  title: AppLocalizations.of(context)!.sort_by_date_newest,
                                   icon: CupertinoIcons.up_arrow,
                                   onTap: () {
                                     homeBloc.add( HomeEvent.sortByDateDescending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));
@@ -345,14 +354,14 @@ class _MultiBoardListState extends State<MultiBoardList> {
                                 ),
                                 const PullDownMenuDivider(),
                                 PullDownMenuItem(
-                                  title: 'Sort By Date (Oldest)',
+                                  title: AppLocalizations.of(context)!.sort_by_date_oldest,
                                   icon: CupertinoIcons.down_arrow,
                                   onTap: () {
                                     homeBloc.add( HomeEvent.sortByDateAscending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));
                                   },
                                 ),
                                 PullDownMenuItem(
-                                  title: 'Sort By Priority (Highest)',
+                                  title: AppLocalizations.of(context)!.sort_by_priority_highest,
                                   icon: CupertinoIcons.up_arrow,
                                   onTap: () {
                                     homeBloc.add( HomeEvent.sortByPriorityDescending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));
@@ -360,7 +369,7 @@ class _MultiBoardListState extends State<MultiBoardList> {
                                 ),
                                 const PullDownMenuDivider(),
                                 PullDownMenuItem(
-                                  title: 'Sort By Priority (Lowest)',
+                                  title: AppLocalizations.of(context)!.sort_by_priority_lowest,
                                   icon: CupertinoIcons.down_arrow,
                                   onTap: () {
                                     homeBloc.add( HomeEvent.sortByPriorityAscending(columnData.id == "To Do"?todoStatusId:columnData.id == "In Progress"?inProgressStatusId:doneStatusId));

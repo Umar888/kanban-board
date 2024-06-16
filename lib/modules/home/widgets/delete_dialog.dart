@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> showDeleteDialog({
   required BuildContext context,
@@ -24,13 +25,13 @@ Future<void> showDeleteDialog({
           content: Text(content),
           actions: [
             CupertinoButton(
-              child: const Text("NO", style: TextStyle(color: Colors.black)),
+              child: Text(AppLocalizations.of(context)!.no, style: TextStyle(color: Colors.black)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             CupertinoButton(
-              child: const Text("YES", style: TextStyle(color: Colors.red)),
+              child: Text(AppLocalizations.of(context)!.yes, style: TextStyle(color: Colors.red)),
               onPressed: () {
                 Navigator.of(context).pop("remove");
               },

@@ -2,12 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kanban_board/helpers/internet/internet_cubit.dart';
+import 'package:kanban_board/modules/home/widgets/delete_dialog.dart';
+import 'package:kanban_board/services/shared_preference/shared_preference.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
 import 'package:pull_down_button/pull_down_button.dart';
 
+import '../../../constant/string_constants.dart';
 import '../../../intermediate_widget/bottom_navigation.dart';
+import '../../../services/providers/locale_provider.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/add_task_bottom_sheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeForm extends StatefulWidget {
   const HomeForm({super.key});
@@ -19,6 +26,7 @@ class HomeForm extends StatefulWidget {
 class _HomeFormState extends State<HomeForm> with SingleTickerProviderStateMixin,WidgetsBindingObserver {
   late TabController _tabController;
   late HomeBloc homeBloc;
+  final SharedPreference sharedPreference = SharedPreference();
 
   @override
   void dispose() {
@@ -56,14 +64,21 @@ class _HomeFormState extends State<HomeForm> with SingleTickerProviderStateMixin
             listener: (context, state) {
               if(state.message.isNotEmpty && state.addHomeLoadingBlocStatus == AddHomeLoadingBlocStatus.isSuccess){
                 MotionToast.success(
-                  title:  const Text("Success"),
+                  title:  Text(AppLocalizations.of(context)!.success),
                   description:  Text(state.message),
                 ).show(context);
                 homeBloc.add(const HomeEvent.resetMessage());
               }
               else if(state.message.isNotEmpty && state.addHomeLoadingBlocStatus == AddHomeLoadingBlocStatus.isFail){
                 MotionToast.error(
-                  title:  const Text("Error"),
+                  title:  Text(AppLocalizations.of(context)!.error),
+                  description:  Text(state.message),
+                ).show(context);
+                homeBloc.add(const HomeEvent.resetMessage());
+              }
+              else if(state.message.isNotEmpty && state.homeLoadingBlocStatus == HomeLoadingBlocStatus.isSuccess){
+                MotionToast.success(
+                  title:  Text(AppLocalizations.of(context)!.success),
                   description:  Text(state.message),
                 ).show(context);
                 homeBloc.add(const HomeEvent.resetMessage());
@@ -73,7 +88,7 @@ class _HomeFormState extends State<HomeForm> with SingleTickerProviderStateMixin
             return Scaffold(
                 backgroundColor:Colors.white ,
                 appBar: AppBar(
-                    title: const Text('Kanban Board'),
+                  title: Text(AppLocalizations.of(context)!.kanbanBoard),
                     surfaceTintColor: Colors.white,
                     centerTitle: true,
                     forceMaterialTransparency: true,
@@ -81,39 +96,104 @@ class _HomeFormState extends State<HomeForm> with SingleTickerProviderStateMixin
                     PullDownButton(
                       itemBuilder: (context) => [
                         PullDownMenuItem(
-                          title: 'Change Language',
+                          title: AppLocalizations.of(context)!.changeLanguage,
                           icon: Icons.translate,
                           onTap: () {
 
                           },
                         ),
+
+                        const PullDownMenuDivider(),
                        PullDownMenuActionsRow.medium(
                           items: [
                             PullDownMenuItem(
-                              onTap: () {},
-                              title: 'Reply',
-                              icon: CupertinoIcons.arrowshape_turn_up_left,
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('en', 'US'));
+                                await sharedPreference.saveString(languageId, 'en');
+
+                              },
+                              title: AppLocalizations.of(context)!.english,
+                              icon: Icons.language,
                             ),
                             PullDownMenuItem(
-                              onTap: () {},
-                              title: 'Copy',
-                              icon: CupertinoIcons.doc_on_doc,
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('de', 'DE'));
+                                await sharedPreference.saveString(languageId, 'de');
+
+                              },
+                              title: AppLocalizations.of(context)!.german,
+                              icon: Icons.language,
                             ),
                             PullDownMenuItem(
-                              onTap: () {},
-                              title: 'Edit',
-                              icon: CupertinoIcons.pencil,
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('fr', 'FR'));
+                                await sharedPreference.saveString(languageId, 'fr');
+
+                              },
+                              title: AppLocalizations.of(context)!.french,
+                              icon: Icons.language,
+                            ),
+                          ],
+                        ),
+                        PullDownMenuActionsRow.medium(
+                          items: [
+                            PullDownMenuItem(
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('ru', 'RU'));
+                                await sharedPreference.saveString(languageId, 'ru');
+
+                              },
+                              title: AppLocalizations.of(context)!.russian,
+                              icon: Icons.language,
+                            ),
+                            PullDownMenuItem(
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('it', 'IT'));
+                                await sharedPreference.saveString(languageId, 'it');
+
+                              },
+                              title: AppLocalizations.of(context)!.italian,
+                              icon: Icons.language,
+                            ),
+                            PullDownMenuItem(
+                              onTap: () async {
+                                final provider = Provider.of<LocaleProvider>(context, listen: false);
+                                provider.setLocale(const Locale('es', 'ES'));
+                                await sharedPreference.saveString(languageId, 'es');
+
+                              },
+                              title: AppLocalizations.of(context)!.spanish,
+                              icon: Icons.language,
                             ),
                           ],
                         ),
                         const PullDownMenuDivider.large(),
                         PullDownMenuItem(
-                          title: 'Delete all tasks',
+                          title: AppLocalizations.of(context)!.deleteAllTasks,
                           icon: CupertinoIcons.delete_solid,
                           isDestructive: true,
                           onTap: () {
-
-
+                            showDeleteDialog(
+                                context: context,
+                                title: AppLocalizations.of(context)!.delete_all_tasks,
+                                content: AppLocalizations.of(context)!.delete_all_tasks_confirmation,
+                                onConfirm: (){
+                                  if(internetState is InternetDisconnected){
+                                    MotionToast.warning(
+                                      title:  Text(AppLocalizations.of(context)!.error),
+                                      description:  Text(AppLocalizations.of(context)!.check_internet),
+                                    ).show(context);
+                                  }
+                                  else{
+                                    homeBloc.add(HomeEvent.deleteAllTask(appLocalization: AppLocalizations.of(context)!));
+                                  }
+                                }
+                             );
                           },
                         ),
                       ],

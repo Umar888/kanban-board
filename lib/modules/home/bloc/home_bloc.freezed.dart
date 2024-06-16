@@ -23,16 +23,29 @@ mixin _$HomeEvent {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -64,6 +77,7 @@ mixin _$HomeEvent {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -79,16 +93,29 @@ mixin _$HomeEvent {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -117,6 +144,7 @@ mixin _$HomeEvent {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -132,16 +160,29 @@ mixin _$HomeEvent {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -170,6 +211,7 @@ mixin _$HomeEvent {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -217,6 +259,7 @@ mixin _$HomeEvent {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -260,6 +303,7 @@ mixin _$HomeEvent {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -301,6 +345,7 @@ mixin _$HomeEvent {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -402,16 +447,29 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -443,6 +501,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -461,16 +520,29 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -499,6 +571,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -517,16 +590,29 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -555,6 +641,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -608,6 +695,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -654,6 +742,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -698,6 +787,7 @@ class _$UpdateSelectedTaskTagImpl implements _UpdateSelectedTaskTag {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -795,16 +885,29 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -836,6 +939,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -854,16 +958,29 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -892,6 +1009,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -910,16 +1028,29 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -948,6 +1079,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -1001,6 +1133,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -1047,6 +1180,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1091,6 +1225,7 @@ class _$RemoveSelectedTaskTagImpl implements _RemoveSelectedTaskTag {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1190,16 +1325,29 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -1231,6 +1379,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -1249,16 +1398,29 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -1287,6 +1449,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -1305,16 +1468,29 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -1343,6 +1519,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -1396,6 +1573,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -1442,6 +1620,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1486,6 +1665,7 @@ class _$UpdateSelectedTaskPriorityImpl implements _UpdateSelectedTaskPriority {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1586,16 +1766,29 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -1627,6 +1820,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -1645,16 +1839,29 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -1683,6 +1890,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -1701,16 +1909,29 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -1739,6 +1960,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -1792,6 +2014,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -1838,6 +2061,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1882,6 +2106,7 @@ class _$UpdateSelectedTaskStatusImpl implements _UpdateSelectedTaskStatus {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -1916,7 +2141,8 @@ abstract class _$$AddNewTaskImplCopyWith<$Res> {
       __$$AddNewTaskImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String dueDate,
+      {AppLocalizations appLocalization,
+      String dueDate,
       String content,
       String description,
       void Function()? Function() onComplete});
@@ -1933,12 +2159,17 @@ class __$$AddNewTaskImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? appLocalization = freezed,
     Object? dueDate = null,
     Object? content = null,
     Object? description = null,
     Object? onComplete = null,
   }) {
     return _then(_$AddNewTaskImpl(
+      appLocalization: freezed == appLocalization
+          ? _value.appLocalization
+          : appLocalization // ignore: cast_nullable_to_non_nullable
+              as AppLocalizations,
       dueDate: null == dueDate
           ? _value.dueDate
           : dueDate // ignore: cast_nullable_to_non_nullable
@@ -1963,11 +2194,14 @@ class __$$AddNewTaskImplCopyWithImpl<$Res>
 
 class _$AddNewTaskImpl implements _AddNewTask {
   const _$AddNewTaskImpl(
-      {required this.dueDate,
+      {required this.appLocalization,
+      required this.dueDate,
       required this.content,
       required this.description,
       required this.onComplete});
 
+  @override
+  final AppLocalizations appLocalization;
   @override
   final String dueDate;
   @override
@@ -1979,7 +2213,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
 
   @override
   String toString() {
-    return 'HomeEvent.addNewTask(dueDate: $dueDate, content: $content, description: $description, onComplete: $onComplete)';
+    return 'HomeEvent.addNewTask(appLocalization: $appLocalization, dueDate: $dueDate, content: $content, description: $description, onComplete: $onComplete)';
   }
 
   @override
@@ -1987,6 +2221,8 @@ class _$AddNewTaskImpl implements _AddNewTask {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddNewTaskImpl &&
+            const DeepCollectionEquality()
+                .equals(other.appLocalization, appLocalization) &&
             (identical(other.dueDate, dueDate) || other.dueDate == dueDate) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.description, description) ||
@@ -1996,8 +2232,13 @@ class _$AddNewTaskImpl implements _AddNewTask {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, dueDate, content, description, onComplete);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(appLocalization),
+      dueDate,
+      content,
+      description,
+      onComplete);
 
   @JsonKey(ignore: true)
   @override
@@ -2013,16 +2254,29 @@ class _$AddNewTaskImpl implements _AddNewTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -2054,6 +2308,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -2062,7 +2317,8 @@ class _$AddNewTaskImpl implements _AddNewTask {
     required TResult Function(String id) sortByPriorityDescending,
     required TResult Function(String id) sortByPriorityAscending,
   }) {
-    return addNewTask(dueDate, content, description, onComplete);
+    return addNewTask(
+        appLocalization, dueDate, content, description, onComplete);
   }
 
   @override
@@ -2072,16 +2328,29 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -2110,6 +2379,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -2118,7 +2388,8 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult? Function(String id)? sortByPriorityDescending,
     TResult? Function(String id)? sortByPriorityAscending,
   }) {
-    return addNewTask?.call(dueDate, content, description, onComplete);
+    return addNewTask?.call(
+        appLocalization, dueDate, content, description, onComplete);
   }
 
   @override
@@ -2128,16 +2399,29 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -2166,6 +2450,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -2176,7 +2461,8 @@ class _$AddNewTaskImpl implements _AddNewTask {
     required TResult orElse(),
   }) {
     if (addNewTask != null) {
-      return addNewTask(dueDate, content, description, onComplete);
+      return addNewTask(
+          appLocalization, dueDate, content, description, onComplete);
     }
     return orElse();
   }
@@ -2219,6 +2505,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -2265,6 +2552,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -2309,6 +2597,7 @@ class _$AddNewTaskImpl implements _AddNewTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -2327,12 +2616,14 @@ class _$AddNewTaskImpl implements _AddNewTask {
 
 abstract class _AddNewTask implements HomeEvent {
   const factory _AddNewTask(
-          {required final String dueDate,
+          {required final AppLocalizations appLocalization,
+          required final String dueDate,
           required final String content,
           required final String description,
           required final void Function()? Function() onComplete}) =
       _$AddNewTaskImpl;
 
+  AppLocalizations get appLocalization;
   String get dueDate;
   String get content;
   String get description;
@@ -2349,7 +2640,8 @@ abstract class _$$AddFullTaskImplCopyWith<$Res> {
       __$$AddFullTaskImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String dueDate,
+      {AppLocalizations appLocalization,
+      String dueDate,
       String content,
       String taskId,
       String description,
@@ -2367,6 +2659,7 @@ class __$$AddFullTaskImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? appLocalization = freezed,
     Object? dueDate = null,
     Object? content = null,
     Object? taskId = null,
@@ -2374,6 +2667,10 @@ class __$$AddFullTaskImplCopyWithImpl<$Res>
     Object? onComplete = null,
   }) {
     return _then(_$AddFullTaskImpl(
+      appLocalization: freezed == appLocalization
+          ? _value.appLocalization
+          : appLocalization // ignore: cast_nullable_to_non_nullable
+              as AppLocalizations,
       dueDate: null == dueDate
           ? _value.dueDate
           : dueDate // ignore: cast_nullable_to_non_nullable
@@ -2402,12 +2699,15 @@ class __$$AddFullTaskImplCopyWithImpl<$Res>
 
 class _$AddFullTaskImpl implements _AddFullTask {
   const _$AddFullTaskImpl(
-      {required this.dueDate,
+      {required this.appLocalization,
+      required this.dueDate,
       required this.content,
       required this.taskId,
       required this.description,
       required this.onComplete});
 
+  @override
+  final AppLocalizations appLocalization;
   @override
   final String dueDate;
   @override
@@ -2421,7 +2721,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
 
   @override
   String toString() {
-    return 'HomeEvent.updateFullTask(dueDate: $dueDate, content: $content, taskId: $taskId, description: $description, onComplete: $onComplete)';
+    return 'HomeEvent.updateFullTask(appLocalization: $appLocalization, dueDate: $dueDate, content: $content, taskId: $taskId, description: $description, onComplete: $onComplete)';
   }
 
   @override
@@ -2429,6 +2729,8 @@ class _$AddFullTaskImpl implements _AddFullTask {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddFullTaskImpl &&
+            const DeepCollectionEquality()
+                .equals(other.appLocalization, appLocalization) &&
             (identical(other.dueDate, dueDate) || other.dueDate == dueDate) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.taskId, taskId) || other.taskId == taskId) &&
@@ -2440,7 +2742,13 @@ class _$AddFullTaskImpl implements _AddFullTask {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, dueDate, content, taskId, description, onComplete);
+      runtimeType,
+      const DeepCollectionEquality().hash(appLocalization),
+      dueDate,
+      content,
+      taskId,
+      description,
+      onComplete);
 
   @JsonKey(ignore: true)
   @override
@@ -2456,16 +2764,29 @@ class _$AddFullTaskImpl implements _AddFullTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -2497,6 +2818,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -2505,7 +2827,8 @@ class _$AddFullTaskImpl implements _AddFullTask {
     required TResult Function(String id) sortByPriorityDescending,
     required TResult Function(String id) sortByPriorityAscending,
   }) {
-    return updateFullTask(dueDate, content, taskId, description, onComplete);
+    return updateFullTask(
+        appLocalization, dueDate, content, taskId, description, onComplete);
   }
 
   @override
@@ -2515,16 +2838,29 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -2553,6 +2889,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -2562,7 +2899,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult? Function(String id)? sortByPriorityAscending,
   }) {
     return updateFullTask?.call(
-        dueDate, content, taskId, description, onComplete);
+        appLocalization, dueDate, content, taskId, description, onComplete);
   }
 
   @override
@@ -2572,16 +2909,29 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -2610,6 +2960,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -2620,7 +2971,8 @@ class _$AddFullTaskImpl implements _AddFullTask {
     required TResult orElse(),
   }) {
     if (updateFullTask != null) {
-      return updateFullTask(dueDate, content, taskId, description, onComplete);
+      return updateFullTask(
+          appLocalization, dueDate, content, taskId, description, onComplete);
     }
     return orElse();
   }
@@ -2663,6 +3015,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -2709,6 +3062,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -2753,6 +3107,7 @@ class _$AddFullTaskImpl implements _AddFullTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -2771,13 +3126,15 @@ class _$AddFullTaskImpl implements _AddFullTask {
 
 abstract class _AddFullTask implements HomeEvent {
   const factory _AddFullTask(
-          {required final String dueDate,
+          {required final AppLocalizations appLocalization,
+          required final String dueDate,
           required final String content,
           required final String taskId,
           required final String description,
           required final void Function()? Function() onComplete}) =
       _$AddFullTaskImpl;
 
+  AppLocalizations get appLocalization;
   String get dueDate;
   String get content;
   String get taskId;
@@ -2795,7 +3152,10 @@ abstract class _$$AddNewCommentImplCopyWith<$Res> {
       __$$AddNewCommentImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String taskId, String content, void Function()? Function() onComplete});
+      {AppLocalizations appLocalization,
+      String taskId,
+      String content,
+      void Function()? Function() onComplete});
 }
 
 /// @nodoc
@@ -2809,11 +3169,16 @@ class __$$AddNewCommentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? appLocalization = freezed,
     Object? taskId = null,
     Object? content = null,
     Object? onComplete = null,
   }) {
     return _then(_$AddNewCommentImpl(
+      appLocalization: freezed == appLocalization
+          ? _value.appLocalization
+          : appLocalization // ignore: cast_nullable_to_non_nullable
+              as AppLocalizations,
       taskId: null == taskId
           ? _value.taskId
           : taskId // ignore: cast_nullable_to_non_nullable
@@ -2834,8 +3199,13 @@ class __$$AddNewCommentImplCopyWithImpl<$Res>
 
 class _$AddNewCommentImpl implements _AddNewComment {
   const _$AddNewCommentImpl(
-      {required this.taskId, required this.content, required this.onComplete});
+      {required this.appLocalization,
+      required this.taskId,
+      required this.content,
+      required this.onComplete});
 
+  @override
+  final AppLocalizations appLocalization;
   @override
   final String taskId;
   @override
@@ -2845,7 +3215,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
 
   @override
   String toString() {
-    return 'HomeEvent.addNewComment(taskId: $taskId, content: $content, onComplete: $onComplete)';
+    return 'HomeEvent.addNewComment(appLocalization: $appLocalization, taskId: $taskId, content: $content, onComplete: $onComplete)';
   }
 
   @override
@@ -2853,6 +3223,8 @@ class _$AddNewCommentImpl implements _AddNewComment {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddNewCommentImpl &&
+            const DeepCollectionEquality()
+                .equals(other.appLocalization, appLocalization) &&
             (identical(other.taskId, taskId) || other.taskId == taskId) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.onComplete, onComplete) ||
@@ -2860,7 +3232,12 @@ class _$AddNewCommentImpl implements _AddNewComment {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, taskId, content, onComplete);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(appLocalization),
+      taskId,
+      content,
+      onComplete);
 
   @JsonKey(ignore: true)
   @override
@@ -2876,16 +3253,29 @@ class _$AddNewCommentImpl implements _AddNewComment {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -2917,6 +3307,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -2925,7 +3316,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     required TResult Function(String id) sortByPriorityDescending,
     required TResult Function(String id) sortByPriorityAscending,
   }) {
-    return addNewComment(taskId, content, onComplete);
+    return addNewComment(appLocalization, taskId, content, onComplete);
   }
 
   @override
@@ -2935,16 +3326,29 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -2973,6 +3377,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -2981,7 +3386,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult? Function(String id)? sortByPriorityDescending,
     TResult? Function(String id)? sortByPriorityAscending,
   }) {
-    return addNewComment?.call(taskId, content, onComplete);
+    return addNewComment?.call(appLocalization, taskId, content, onComplete);
   }
 
   @override
@@ -2991,16 +3396,29 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -3029,6 +3447,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -3039,7 +3458,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     required TResult orElse(),
   }) {
     if (addNewComment != null) {
-      return addNewComment(taskId, content, onComplete);
+      return addNewComment(appLocalization, taskId, content, onComplete);
     }
     return orElse();
   }
@@ -3082,6 +3501,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -3128,6 +3548,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -3172,6 +3593,7 @@ class _$AddNewCommentImpl implements _AddNewComment {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -3190,11 +3612,13 @@ class _$AddNewCommentImpl implements _AddNewComment {
 
 abstract class _AddNewComment implements HomeEvent {
   const factory _AddNewComment(
-          {required final String taskId,
+          {required final AppLocalizations appLocalization,
+          required final String taskId,
           required final String content,
           required final void Function()? Function() onComplete}) =
       _$AddNewCommentImpl;
 
+  AppLocalizations get appLocalization;
   String get taskId;
   String get content;
   void Function()? Function() get onComplete;
@@ -3210,7 +3634,8 @@ abstract class _$$UpdateommentImplCopyWith<$Res> {
       __$$UpdateommentImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String taskId,
+      {AppLocalizations appLocalization,
+      String taskId,
       String commentId,
       String content,
       void Function()? Function() onComplete});
@@ -3227,12 +3652,17 @@ class __$$UpdateommentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? appLocalization = freezed,
     Object? taskId = null,
     Object? commentId = null,
     Object? content = null,
     Object? onComplete = null,
   }) {
     return _then(_$UpdateommentImpl(
+      appLocalization: freezed == appLocalization
+          ? _value.appLocalization
+          : appLocalization // ignore: cast_nullable_to_non_nullable
+              as AppLocalizations,
       taskId: null == taskId
           ? _value.taskId
           : taskId // ignore: cast_nullable_to_non_nullable
@@ -3257,11 +3687,14 @@ class __$$UpdateommentImplCopyWithImpl<$Res>
 
 class _$UpdateommentImpl implements _Updateomment {
   const _$UpdateommentImpl(
-      {required this.taskId,
+      {required this.appLocalization,
+      required this.taskId,
       required this.commentId,
       required this.content,
       required this.onComplete});
 
+  @override
+  final AppLocalizations appLocalization;
   @override
   final String taskId;
   @override
@@ -3273,7 +3706,7 @@ class _$UpdateommentImpl implements _Updateomment {
 
   @override
   String toString() {
-    return 'HomeEvent.updateComment(taskId: $taskId, commentId: $commentId, content: $content, onComplete: $onComplete)';
+    return 'HomeEvent.updateComment(appLocalization: $appLocalization, taskId: $taskId, commentId: $commentId, content: $content, onComplete: $onComplete)';
   }
 
   @override
@@ -3281,6 +3714,8 @@ class _$UpdateommentImpl implements _Updateomment {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateommentImpl &&
+            const DeepCollectionEquality()
+                .equals(other.appLocalization, appLocalization) &&
             (identical(other.taskId, taskId) || other.taskId == taskId) &&
             (identical(other.commentId, commentId) ||
                 other.commentId == commentId) &&
@@ -3290,8 +3725,13 @@ class _$UpdateommentImpl implements _Updateomment {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, taskId, commentId, content, onComplete);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(appLocalization),
+      taskId,
+      commentId,
+      content,
+      onComplete);
 
   @JsonKey(ignore: true)
   @override
@@ -3307,16 +3747,29 @@ class _$UpdateommentImpl implements _Updateomment {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -3348,6 +3801,7 @@ class _$UpdateommentImpl implements _Updateomment {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -3356,7 +3810,8 @@ class _$UpdateommentImpl implements _Updateomment {
     required TResult Function(String id) sortByPriorityDescending,
     required TResult Function(String id) sortByPriorityAscending,
   }) {
-    return updateComment(taskId, commentId, content, onComplete);
+    return updateComment(
+        appLocalization, taskId, commentId, content, onComplete);
   }
 
   @override
@@ -3366,16 +3821,29 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -3404,6 +3872,7 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -3412,7 +3881,8 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult? Function(String id)? sortByPriorityDescending,
     TResult? Function(String id)? sortByPriorityAscending,
   }) {
-    return updateComment?.call(taskId, commentId, content, onComplete);
+    return updateComment?.call(
+        appLocalization, taskId, commentId, content, onComplete);
   }
 
   @override
@@ -3422,16 +3892,29 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -3460,6 +3943,7 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -3470,7 +3954,8 @@ class _$UpdateommentImpl implements _Updateomment {
     required TResult orElse(),
   }) {
     if (updateComment != null) {
-      return updateComment(taskId, commentId, content, onComplete);
+      return updateComment(
+          appLocalization, taskId, commentId, content, onComplete);
     }
     return orElse();
   }
@@ -3513,6 +3998,7 @@ class _$UpdateommentImpl implements _Updateomment {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -3559,6 +4045,7 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -3603,6 +4090,7 @@ class _$UpdateommentImpl implements _Updateomment {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -3621,12 +4109,14 @@ class _$UpdateommentImpl implements _Updateomment {
 
 abstract class _Updateomment implements HomeEvent {
   const factory _Updateomment(
-          {required final String taskId,
+          {required final AppLocalizations appLocalization,
+          required final String taskId,
           required final String commentId,
           required final String content,
           required final void Function()? Function() onComplete}) =
       _$UpdateommentImpl;
 
+  AppLocalizations get appLocalization;
   String get taskId;
   String get commentId;
   String get content;
@@ -3728,16 +4218,29 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -3769,6 +4272,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -3787,16 +4291,29 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -3825,6 +4342,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -3843,16 +4361,29 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -3881,6 +4412,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -3934,6 +4466,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -3980,6 +4513,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4024,6 +4558,7 @@ class _$FetchAllCommentsImpl implements _FetchAllComments {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4134,16 +4669,29 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -4175,6 +4723,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -4193,16 +4742,29 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -4231,6 +4793,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -4249,16 +4812,29 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -4287,6 +4863,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -4340,6 +4917,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -4386,6 +4964,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4430,6 +5009,7 @@ class _$FetchAllTasksImpl implements _FetchAllTasks {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4530,16 +5110,29 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -4571,6 +5164,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -4589,16 +5183,29 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -4627,6 +5234,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -4645,16 +5253,29 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -4683,6 +5304,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -4736,6 +5358,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -4782,6 +5405,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4826,6 +5450,7 @@ class _$SetPickedFileForCommentImpl implements _SetPickedFileForComment {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -4921,16 +5546,29 @@ class _$SyncDataImpl implements _SyncData {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -4962,6 +5600,7 @@ class _$SyncDataImpl implements _SyncData {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -4980,16 +5619,29 @@ class _$SyncDataImpl implements _SyncData {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -5018,6 +5670,7 @@ class _$SyncDataImpl implements _SyncData {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -5036,16 +5689,29 @@ class _$SyncDataImpl implements _SyncData {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -5074,6 +5740,7 @@ class _$SyncDataImpl implements _SyncData {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -5127,6 +5794,7 @@ class _$SyncDataImpl implements _SyncData {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -5173,6 +5841,7 @@ class _$SyncDataImpl implements _SyncData {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -5217,6 +5886,7 @@ class _$SyncDataImpl implements _SyncData {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -5286,16 +5956,29 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -5327,6 +6010,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -5345,16 +6029,29 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -5383,6 +6080,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -5401,16 +6099,29 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -5439,6 +6150,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -5492,6 +6204,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -5538,6 +6251,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -5582,6 +6296,7 @@ class _$SyncDataInServerImpl implements _SyncDataInServer {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -5678,16 +6393,29 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -5719,6 +6447,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -5737,16 +6466,29 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -5775,6 +6517,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -5793,16 +6536,29 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -5831,6 +6587,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -5884,6 +6641,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -5930,6 +6688,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -5974,6 +6733,7 @@ class _$AddCurrentTimeStampToAllTasksLocallyImpl
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -6074,16 +6834,29 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -6115,6 +6888,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -6133,16 +6907,29 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -6171,6 +6958,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -6189,16 +6977,29 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -6227,6 +7028,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -6280,6 +7082,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -6326,6 +7129,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -6370,6 +7174,7 @@ class _$UpdateCurrentHomeIndexImpl implements _UpdateCurrentHomeIndex {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -6439,16 +7244,29 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -6480,6 +7298,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -6498,16 +7317,29 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -6536,6 +7368,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -6554,16 +7387,29 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -6592,6 +7438,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -6645,6 +7492,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -6691,6 +7539,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -6735,6 +7584,7 @@ class _$ResetSelectItemsImpl implements _ResetSelectItems {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -6836,16 +7686,29 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -6877,6 +7740,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -6895,16 +7759,29 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -6933,6 +7810,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -6951,16 +7829,29 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -6989,6 +7880,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -7042,6 +7934,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -7088,6 +7981,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -7132,6 +8026,7 @@ class _$UpdateFocusedDateImpl implements _UpdateFocusedDate {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -7203,16 +8098,29 @@ class _$ResetMessageImpl implements _ResetMessage {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -7244,6 +8152,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -7262,16 +8171,29 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -7300,6 +8222,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -7318,16 +8241,29 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -7356,6 +8292,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -7409,6 +8346,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -7455,6 +8393,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -7499,6 +8438,7 @@ class _$ResetMessageImpl implements _ResetMessage {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -7629,16 +8569,29 @@ class _$UpdateSectionImpl implements _UpdateSection {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -7670,6 +8623,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -7688,16 +8642,29 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -7726,6 +8693,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -7744,16 +8712,29 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -7782,6 +8763,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -7835,6 +8817,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -7881,6 +8864,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -7925,6 +8909,7 @@ class _$UpdateSectionImpl implements _UpdateSection {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -8042,16 +9027,29 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -8083,6 +9081,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -8101,16 +9100,29 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -8139,6 +9151,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -8157,16 +9170,29 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -8195,6 +9221,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -8248,6 +9275,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -8294,6 +9322,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -8338,6 +9367,7 @@ class _$UpdateTimerImpl implements _UpdateTimer {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -8452,16 +9482,29 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -8493,6 +9536,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -8511,16 +9555,29 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -8549,6 +9606,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -8567,16 +9625,29 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -8605,6 +9676,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -8658,6 +9730,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -8704,6 +9777,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -8748,6 +9822,7 @@ class _$UpdateTimerStateImpl implements _UpdateTimerState {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -8862,16 +9937,29 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -8903,6 +9991,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -8921,16 +10010,29 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -8959,6 +10061,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -8977,16 +10080,29 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -9015,6 +10131,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -9068,6 +10185,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -9114,6 +10232,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -9158,6 +10277,7 @@ class _$UpdateTimerLocallyImpl implements _UpdateTimerLocally {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -9274,16 +10394,29 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -9315,6 +10448,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -9333,16 +10467,29 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -9371,6 +10518,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -9389,16 +10537,29 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -9427,6 +10588,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -9480,6 +10642,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -9526,6 +10689,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -9570,6 +10734,7 @@ class _$UpdateTimerStateLocallyImpl implements _UpdateTimerStateLocally {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -9683,16 +10848,29 @@ class _$CompleteTaskImpl implements _CompleteTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -9724,6 +10902,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -9742,16 +10921,29 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -9780,6 +10972,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -9798,16 +10991,29 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -9836,6 +11042,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -9889,6 +11096,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -9935,6 +11143,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -9979,6 +11188,7 @@ class _$CompleteTaskImpl implements _CompleteTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -10093,16 +11303,29 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -10134,6 +11357,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -10152,16 +11376,29 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -10190,6 +11427,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -10208,16 +11446,29 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -10246,6 +11497,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -10299,6 +11551,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -10345,6 +11598,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -10389,6 +11643,7 @@ class _$ReopenTaskTaskImpl implements _ReopenTaskTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -10502,16 +11757,29 @@ class _$StartTaskImpl implements _StartTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -10543,6 +11811,7 @@ class _$StartTaskImpl implements _StartTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -10561,16 +11830,29 @@ class _$StartTaskImpl implements _StartTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -10599,6 +11881,7 @@ class _$StartTaskImpl implements _StartTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -10617,16 +11900,29 @@ class _$StartTaskImpl implements _StartTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -10655,6 +11951,7 @@ class _$StartTaskImpl implements _StartTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -10708,6 +12005,7 @@ class _$StartTaskImpl implements _StartTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -10754,6 +12052,7 @@ class _$StartTaskImpl implements _StartTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -10798,6 +12097,7 @@ class _$StartTaskImpl implements _StartTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -10895,16 +12195,29 @@ class _$DeleteTaskImpl implements _DeleteTask {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -10936,6 +12249,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -10954,16 +12268,29 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -10992,6 +12319,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -11010,16 +12338,29 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -11048,6 +12389,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -11101,6 +12443,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -11147,6 +12490,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -11191,6 +12535,7 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -11213,6 +12558,444 @@ abstract class _DeleteTask implements HomeEvent {
   String get taskId;
   @JsonKey(ignore: true)
   _$$DeleteTaskImplCopyWith<_$DeleteTaskImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAllTaskImplCopyWith<$Res> {
+  factory _$$DeleteAllTaskImplCopyWith(
+          _$DeleteAllTaskImpl value, $Res Function(_$DeleteAllTaskImpl) then) =
+      __$$DeleteAllTaskImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppLocalizations appLocalization});
+}
+
+/// @nodoc
+class __$$DeleteAllTaskImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$DeleteAllTaskImpl>
+    implements _$$DeleteAllTaskImplCopyWith<$Res> {
+  __$$DeleteAllTaskImplCopyWithImpl(
+      _$DeleteAllTaskImpl _value, $Res Function(_$DeleteAllTaskImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appLocalization = freezed,
+  }) {
+    return _then(_$DeleteAllTaskImpl(
+      appLocalization: freezed == appLocalization
+          ? _value.appLocalization
+          : appLocalization // ignore: cast_nullable_to_non_nullable
+              as AppLocalizations,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAllTaskImpl implements _DeleteAllTask {
+  const _$DeleteAllTaskImpl({required this.appLocalization});
+
+  @override
+  final AppLocalizations appLocalization;
+
+  @override
+  String toString() {
+    return 'HomeEvent.deleteAllTask(appLocalization: $appLocalization)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAllTaskImpl &&
+            const DeepCollectionEquality()
+                .equals(other.appLocalization, appLocalization));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(appLocalization));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAllTaskImplCopyWith<_$DeleteAllTaskImpl> get copyWith =>
+      __$$DeleteAllTaskImplCopyWithImpl<_$DeleteAllTaskImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TasksTags tasksTags) updateSelectedTaskTag,
+    required TResult Function(int index) removeSelectedTaskTag,
+    required TResult Function(TasksPriority taskPriority)
+        updateSelectedTaskPriority,
+    required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
+            void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
+        addNewComment,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
+            void Function()? Function() onComplete)
+        updateComment,
+    required TResult Function(
+            String taskId, bool isSyncing, InternetState internetState)
+        fetchAllComments,
+    required TResult Function(bool requiredReload, InternetState internetState)
+        fetchAllTasks,
+    required TResult Function(File? file) setPickedFileForComment,
+    required TResult Function(BuildContext context) syncData,
+    required TResult Function() syncDataInServer,
+    required TResult Function(int savedTime)
+        addCurrentTimeStampToAllTasksLocally,
+    required TResult Function(int index) updateCurrentHomeIndex,
+    required TResult Function() resetSelectItems,
+    required TResult Function(DateTime focusedDate, InternetState internetState)
+        updateFocusedDate,
+    required TResult Function() resetMessage,
+    required TResult Function(String taskId, String fromSectionId,
+            String sectionId, List<String> labels)
+        updateSection,
+    required TResult Function(String taskId, List<String> labels) updateTimer,
+    required TResult Function(String taskId, List<String> labels)
+        updateTimerState,
+    required TResult Function(String taskId, List<String> labels)
+        updateTimerLocally,
+    required TResult Function(String taskId, List<String> labels)
+        updateTimerStateLocally,
+    required TResult Function(String taskId, List<String> labels) completeTask,
+    required TResult Function(String taskId, List<String> labels) reopenTask,
+    required TResult Function(String taskId, List<String> labels) startTask,
+    required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
+    required TResult Function(String commentId, String taskId) deleteComment,
+    required TResult Function(String id) sortByDateDescending,
+    required TResult Function(String id) sortByNameDescending,
+    required TResult Function(String id) sortByNameAscending,
+    required TResult Function(String id) sortByDateAscending,
+    required TResult Function(String id) sortByPriorityDescending,
+    required TResult Function(String id) sortByPriorityAscending,
+  }) {
+    return deleteAllTask(appLocalization);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TasksTags tasksTags)? updateSelectedTaskTag,
+    TResult? Function(int index)? removeSelectedTaskTag,
+    TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
+    TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
+            void Function()? Function() onComplete)?
+        addNewTask,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
+        addNewComment,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
+            void Function()? Function() onComplete)?
+        updateComment,
+    TResult? Function(
+            String taskId, bool isSyncing, InternetState internetState)?
+        fetchAllComments,
+    TResult? Function(bool requiredReload, InternetState internetState)?
+        fetchAllTasks,
+    TResult? Function(File? file)? setPickedFileForComment,
+    TResult? Function(BuildContext context)? syncData,
+    TResult? Function()? syncDataInServer,
+    TResult? Function(int savedTime)? addCurrentTimeStampToAllTasksLocally,
+    TResult? Function(int index)? updateCurrentHomeIndex,
+    TResult? Function()? resetSelectItems,
+    TResult? Function(DateTime focusedDate, InternetState internetState)?
+        updateFocusedDate,
+    TResult? Function()? resetMessage,
+    TResult? Function(String taskId, String fromSectionId, String sectionId,
+            List<String> labels)?
+        updateSection,
+    TResult? Function(String taskId, List<String> labels)? updateTimer,
+    TResult? Function(String taskId, List<String> labels)? updateTimerState,
+    TResult? Function(String taskId, List<String> labels)? updateTimerLocally,
+    TResult? Function(String taskId, List<String> labels)?
+        updateTimerStateLocally,
+    TResult? Function(String taskId, List<String> labels)? completeTask,
+    TResult? Function(String taskId, List<String> labels)? reopenTask,
+    TResult? Function(String taskId, List<String> labels)? startTask,
+    TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
+    TResult? Function(String commentId, String taskId)? deleteComment,
+    TResult? Function(String id)? sortByDateDescending,
+    TResult? Function(String id)? sortByNameDescending,
+    TResult? Function(String id)? sortByNameAscending,
+    TResult? Function(String id)? sortByDateAscending,
+    TResult? Function(String id)? sortByPriorityDescending,
+    TResult? Function(String id)? sortByPriorityAscending,
+  }) {
+    return deleteAllTask?.call(appLocalization);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TasksTags tasksTags)? updateSelectedTaskTag,
+    TResult Function(int index)? removeSelectedTaskTag,
+    TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
+    TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
+            void Function()? Function() onComplete)?
+        addNewTask,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
+        addNewComment,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
+            void Function()? Function() onComplete)?
+        updateComment,
+    TResult Function(
+            String taskId, bool isSyncing, InternetState internetState)?
+        fetchAllComments,
+    TResult Function(bool requiredReload, InternetState internetState)?
+        fetchAllTasks,
+    TResult Function(File? file)? setPickedFileForComment,
+    TResult Function(BuildContext context)? syncData,
+    TResult Function()? syncDataInServer,
+    TResult Function(int savedTime)? addCurrentTimeStampToAllTasksLocally,
+    TResult Function(int index)? updateCurrentHomeIndex,
+    TResult Function()? resetSelectItems,
+    TResult Function(DateTime focusedDate, InternetState internetState)?
+        updateFocusedDate,
+    TResult Function()? resetMessage,
+    TResult Function(String taskId, String fromSectionId, String sectionId,
+            List<String> labels)?
+        updateSection,
+    TResult Function(String taskId, List<String> labels)? updateTimer,
+    TResult Function(String taskId, List<String> labels)? updateTimerState,
+    TResult Function(String taskId, List<String> labels)? updateTimerLocally,
+    TResult Function(String taskId, List<String> labels)?
+        updateTimerStateLocally,
+    TResult Function(String taskId, List<String> labels)? completeTask,
+    TResult Function(String taskId, List<String> labels)? reopenTask,
+    TResult Function(String taskId, List<String> labels)? startTask,
+    TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
+    TResult Function(String commentId, String taskId)? deleteComment,
+    TResult Function(String id)? sortByDateDescending,
+    TResult Function(String id)? sortByNameDescending,
+    TResult Function(String id)? sortByNameAscending,
+    TResult Function(String id)? sortByDateAscending,
+    TResult Function(String id)? sortByPriorityDescending,
+    TResult Function(String id)? sortByPriorityAscending,
+    required TResult orElse(),
+  }) {
+    if (deleteAllTask != null) {
+      return deleteAllTask(appLocalization);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateSelectedTaskTag value)
+        updateSelectedTaskTag,
+    required TResult Function(_RemoveSelectedTaskTag value)
+        removeSelectedTaskTag,
+    required TResult Function(_UpdateSelectedTaskPriority value)
+        updateSelectedTaskPriority,
+    required TResult Function(_UpdateSelectedTaskStatus value)
+        updateSelectedTaskStatus,
+    required TResult Function(_AddNewTask value) addNewTask,
+    required TResult Function(_AddFullTask value) updateFullTask,
+    required TResult Function(_AddNewComment value) addNewComment,
+    required TResult Function(_Updateomment value) updateComment,
+    required TResult Function(_FetchAllComments value) fetchAllComments,
+    required TResult Function(_FetchAllTasks value) fetchAllTasks,
+    required TResult Function(_SetPickedFileForComment value)
+        setPickedFileForComment,
+    required TResult Function(_SyncData value) syncData,
+    required TResult Function(_SyncDataInServer value) syncDataInServer,
+    required TResult Function(_AddCurrentTimeStampToAllTasksLocally value)
+        addCurrentTimeStampToAllTasksLocally,
+    required TResult Function(_UpdateCurrentHomeIndex value)
+        updateCurrentHomeIndex,
+    required TResult Function(_ResetSelectItems value) resetSelectItems,
+    required TResult Function(_UpdateFocusedDate value) updateFocusedDate,
+    required TResult Function(_ResetMessage value) resetMessage,
+    required TResult Function(_UpdateSection value) updateSection,
+    required TResult Function(_UpdateTimer value) updateTimer,
+    required TResult Function(_UpdateTimerState value) updateTimerState,
+    required TResult Function(_UpdateTimerLocally value) updateTimerLocally,
+    required TResult Function(_UpdateTimerStateLocally value)
+        updateTimerStateLocally,
+    required TResult Function(_CompleteTask value) completeTask,
+    required TResult Function(_ReopenTaskTask value) reopenTask,
+    required TResult Function(_StartTask value) startTask,
+    required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
+    required TResult Function(_DeleteComment value) deleteComment,
+    required TResult Function(_SortByDateDescending value) sortByDateDescending,
+    required TResult Function(_SortByNameDescending value) sortByNameDescending,
+    required TResult Function(_SortByNameAscending value) sortByNameAscending,
+    required TResult Function(_SortByDateAscending value) sortByDateAscending,
+    required TResult Function(_SortByPriorityDescending value)
+        sortByPriorityDescending,
+    required TResult Function(_SortByPriorityAscending value)
+        sortByPriorityAscending,
+  }) {
+    return deleteAllTask(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateSelectedTaskTag value)? updateSelectedTaskTag,
+    TResult? Function(_RemoveSelectedTaskTag value)? removeSelectedTaskTag,
+    TResult? Function(_UpdateSelectedTaskPriority value)?
+        updateSelectedTaskPriority,
+    TResult? Function(_UpdateSelectedTaskStatus value)?
+        updateSelectedTaskStatus,
+    TResult? Function(_AddNewTask value)? addNewTask,
+    TResult? Function(_AddFullTask value)? updateFullTask,
+    TResult? Function(_AddNewComment value)? addNewComment,
+    TResult? Function(_Updateomment value)? updateComment,
+    TResult? Function(_FetchAllComments value)? fetchAllComments,
+    TResult? Function(_FetchAllTasks value)? fetchAllTasks,
+    TResult? Function(_SetPickedFileForComment value)? setPickedFileForComment,
+    TResult? Function(_SyncData value)? syncData,
+    TResult? Function(_SyncDataInServer value)? syncDataInServer,
+    TResult? Function(_AddCurrentTimeStampToAllTasksLocally value)?
+        addCurrentTimeStampToAllTasksLocally,
+    TResult? Function(_UpdateCurrentHomeIndex value)? updateCurrentHomeIndex,
+    TResult? Function(_ResetSelectItems value)? resetSelectItems,
+    TResult? Function(_UpdateFocusedDate value)? updateFocusedDate,
+    TResult? Function(_ResetMessage value)? resetMessage,
+    TResult? Function(_UpdateSection value)? updateSection,
+    TResult? Function(_UpdateTimer value)? updateTimer,
+    TResult? Function(_UpdateTimerState value)? updateTimerState,
+    TResult? Function(_UpdateTimerLocally value)? updateTimerLocally,
+    TResult? Function(_UpdateTimerStateLocally value)? updateTimerStateLocally,
+    TResult? Function(_CompleteTask value)? completeTask,
+    TResult? Function(_ReopenTaskTask value)? reopenTask,
+    TResult? Function(_StartTask value)? startTask,
+    TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
+    TResult? Function(_DeleteComment value)? deleteComment,
+    TResult? Function(_SortByDateDescending value)? sortByDateDescending,
+    TResult? Function(_SortByNameDescending value)? sortByNameDescending,
+    TResult? Function(_SortByNameAscending value)? sortByNameAscending,
+    TResult? Function(_SortByDateAscending value)? sortByDateAscending,
+    TResult? Function(_SortByPriorityDescending value)?
+        sortByPriorityDescending,
+    TResult? Function(_SortByPriorityAscending value)? sortByPriorityAscending,
+  }) {
+    return deleteAllTask?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateSelectedTaskTag value)? updateSelectedTaskTag,
+    TResult Function(_RemoveSelectedTaskTag value)? removeSelectedTaskTag,
+    TResult Function(_UpdateSelectedTaskPriority value)?
+        updateSelectedTaskPriority,
+    TResult Function(_UpdateSelectedTaskStatus value)? updateSelectedTaskStatus,
+    TResult Function(_AddNewTask value)? addNewTask,
+    TResult Function(_AddFullTask value)? updateFullTask,
+    TResult Function(_AddNewComment value)? addNewComment,
+    TResult Function(_Updateomment value)? updateComment,
+    TResult Function(_FetchAllComments value)? fetchAllComments,
+    TResult Function(_FetchAllTasks value)? fetchAllTasks,
+    TResult Function(_SetPickedFileForComment value)? setPickedFileForComment,
+    TResult Function(_SyncData value)? syncData,
+    TResult Function(_SyncDataInServer value)? syncDataInServer,
+    TResult Function(_AddCurrentTimeStampToAllTasksLocally value)?
+        addCurrentTimeStampToAllTasksLocally,
+    TResult Function(_UpdateCurrentHomeIndex value)? updateCurrentHomeIndex,
+    TResult Function(_ResetSelectItems value)? resetSelectItems,
+    TResult Function(_UpdateFocusedDate value)? updateFocusedDate,
+    TResult Function(_ResetMessage value)? resetMessage,
+    TResult Function(_UpdateSection value)? updateSection,
+    TResult Function(_UpdateTimer value)? updateTimer,
+    TResult Function(_UpdateTimerState value)? updateTimerState,
+    TResult Function(_UpdateTimerLocally value)? updateTimerLocally,
+    TResult Function(_UpdateTimerStateLocally value)? updateTimerStateLocally,
+    TResult Function(_CompleteTask value)? completeTask,
+    TResult Function(_ReopenTaskTask value)? reopenTask,
+    TResult Function(_StartTask value)? startTask,
+    TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
+    TResult Function(_DeleteComment value)? deleteComment,
+    TResult Function(_SortByDateDescending value)? sortByDateDescending,
+    TResult Function(_SortByNameDescending value)? sortByNameDescending,
+    TResult Function(_SortByNameAscending value)? sortByNameAscending,
+    TResult Function(_SortByDateAscending value)? sortByDateAscending,
+    TResult Function(_SortByPriorityDescending value)? sortByPriorityDescending,
+    TResult Function(_SortByPriorityAscending value)? sortByPriorityAscending,
+    required TResult orElse(),
+  }) {
+    if (deleteAllTask != null) {
+      return deleteAllTask(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAllTask implements HomeEvent {
+  const factory _DeleteAllTask(
+      {required final AppLocalizations appLocalization}) = _$DeleteAllTaskImpl;
+
+  AppLocalizations get appLocalization;
+  @JsonKey(ignore: true)
+  _$$DeleteAllTaskImplCopyWith<_$DeleteAllTaskImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -11294,16 +13077,29 @@ class _$DeleteCommentImpl implements _DeleteComment {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -11335,6 +13131,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -11353,16 +13150,29 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -11391,6 +13201,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -11409,16 +13220,29 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -11447,6 +13271,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -11500,6 +13325,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -11546,6 +13372,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -11590,6 +13417,7 @@ class _$DeleteCommentImpl implements _DeleteComment {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -11689,16 +13517,29 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -11730,6 +13571,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -11748,16 +13590,29 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -11786,6 +13641,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -11804,16 +13660,29 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -11842,6 +13711,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -11895,6 +13765,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -11941,6 +13812,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -11985,6 +13857,7 @@ class _$SortByDateDescendingImpl implements _SortByDateDescending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -12082,16 +13955,29 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -12123,6 +14009,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -12141,16 +14028,29 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -12179,6 +14079,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -12197,16 +14098,29 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -12235,6 +14149,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -12288,6 +14203,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -12334,6 +14250,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -12378,6 +14295,7 @@ class _$SortByNameDescendingImpl implements _SortByNameDescending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -12474,16 +14392,29 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -12515,6 +14446,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -12533,16 +14465,29 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -12571,6 +14516,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -12589,16 +14535,29 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -12627,6 +14586,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -12680,6 +14640,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -12726,6 +14687,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -12770,6 +14732,7 @@ class _$SortByNameAscendingImpl implements _SortByNameAscending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -12866,16 +14829,29 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -12907,6 +14883,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -12925,16 +14902,29 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -12963,6 +14953,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -12981,16 +14972,29 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -13019,6 +15023,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -13072,6 +15077,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -13118,6 +15124,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -13162,6 +15169,7 @@ class _$SortByDateAscendingImpl implements _SortByDateAscending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -13260,16 +15268,29 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -13301,6 +15322,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -13319,16 +15341,29 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -13357,6 +15392,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -13375,16 +15411,29 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -13413,6 +15462,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -13466,6 +15516,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -13512,6 +15563,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -13556,6 +15608,7 @@ class _$SortByPriorityDescendingImpl implements _SortByPriorityDescending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,
@@ -13654,16 +15707,29 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     required TResult Function(TasksPriority taskPriority)
         updateSelectedTaskPriority,
     required TResult Function(TasksStatus tasksStatus) updateSelectedTaskStatus,
-    required TResult Function(String dueDate, String content,
-            String description, void Function()? Function() onComplete)
-        addNewTask,
-    required TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)
-        updateFullTask,
-    required TResult Function(String taskId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)
+        addNewTask,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
+            void Function()? Function() onComplete)
+        updateFullTask,
+    required TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)
         addNewComment,
-    required TResult Function(String taskId, String commentId, String content,
+    required TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)
         updateComment,
     required TResult Function(
@@ -13695,6 +15761,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     required TResult Function(String taskId, List<String> labels) reopenTask,
     required TResult Function(String taskId, List<String> labels) startTask,
     required TResult Function(String taskId) deleteTask,
+    required TResult Function(AppLocalizations appLocalization) deleteAllTask,
     required TResult Function(String commentId, String taskId) deleteComment,
     required TResult Function(String id) sortByDateDescending,
     required TResult Function(String id) sortByNameDescending,
@@ -13713,16 +15780,29 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult? Function(int index)? removeSelectedTaskTag,
     TResult? Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult? Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult? Function(String dueDate, String content, String description,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult? Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult? Function(String taskId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult? Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult? Function(String taskId, String commentId, String content,
+    TResult? Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult? Function(
@@ -13751,6 +15831,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult? Function(String taskId, List<String> labels)? reopenTask,
     TResult? Function(String taskId, List<String> labels)? startTask,
     TResult? Function(String taskId)? deleteTask,
+    TResult? Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult? Function(String commentId, String taskId)? deleteComment,
     TResult? Function(String id)? sortByDateDescending,
     TResult? Function(String id)? sortByNameDescending,
@@ -13769,16 +15850,29 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult Function(int index)? removeSelectedTaskTag,
     TResult Function(TasksPriority taskPriority)? updateSelectedTaskPriority,
     TResult Function(TasksStatus tasksStatus)? updateSelectedTaskStatus,
-    TResult Function(String dueDate, String content, String description,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String description,
             void Function()? Function() onComplete)?
         addNewTask,
-    TResult Function(String dueDate, String content, String taskId,
-            String description, void Function()? Function() onComplete)?
-        updateFullTask,
-    TResult Function(String taskId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String dueDate,
+            String content,
+            String taskId,
+            String description,
             void Function()? Function() onComplete)?
+        updateFullTask,
+    TResult Function(AppLocalizations appLocalization, String taskId,
+            String content, void Function()? Function() onComplete)?
         addNewComment,
-    TResult Function(String taskId, String commentId, String content,
+    TResult Function(
+            AppLocalizations appLocalization,
+            String taskId,
+            String commentId,
+            String content,
             void Function()? Function() onComplete)?
         updateComment,
     TResult Function(
@@ -13807,6 +15901,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult Function(String taskId, List<String> labels)? reopenTask,
     TResult Function(String taskId, List<String> labels)? startTask,
     TResult Function(String taskId)? deleteTask,
+    TResult Function(AppLocalizations appLocalization)? deleteAllTask,
     TResult Function(String commentId, String taskId)? deleteComment,
     TResult Function(String id)? sortByDateDescending,
     TResult Function(String id)? sortByNameDescending,
@@ -13860,6 +15955,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     required TResult Function(_ReopenTaskTask value) reopenTask,
     required TResult Function(_StartTask value) startTask,
     required TResult Function(_DeleteTask value) deleteTask,
+    required TResult Function(_DeleteAllTask value) deleteAllTask,
     required TResult Function(_DeleteComment value) deleteComment,
     required TResult Function(_SortByDateDescending value) sortByDateDescending,
     required TResult Function(_SortByNameDescending value) sortByNameDescending,
@@ -13906,6 +16002,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult? Function(_ReopenTaskTask value)? reopenTask,
     TResult? Function(_StartTask value)? startTask,
     TResult? Function(_DeleteTask value)? deleteTask,
+    TResult? Function(_DeleteAllTask value)? deleteAllTask,
     TResult? Function(_DeleteComment value)? deleteComment,
     TResult? Function(_SortByDateDescending value)? sortByDateDescending,
     TResult? Function(_SortByNameDescending value)? sortByNameDescending,
@@ -13950,6 +16047,7 @@ class _$SortByPriorityAscendingImpl implements _SortByPriorityAscending {
     TResult Function(_ReopenTaskTask value)? reopenTask,
     TResult Function(_StartTask value)? startTask,
     TResult Function(_DeleteTask value)? deleteTask,
+    TResult Function(_DeleteAllTask value)? deleteAllTask,
     TResult Function(_DeleteComment value)? deleteComment,
     TResult Function(_SortByDateDescending value)? sortByDateDescending,
     TResult Function(_SortByNameDescending value)? sortByNameDescending,

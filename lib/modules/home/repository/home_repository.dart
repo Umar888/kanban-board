@@ -142,7 +142,7 @@ class HomeRepository {
     required List<String> labels
 } ) async {
     List<HttpResponse> response = await homeDataSource.completeTask(taskId: taskId, labels: labels);
-    if (response.first.data != null && (response[1].status??false)) {
+    if (response.first.data != null) {
       return TaskModel.fromJson(response.first.data);
     }
     else{
@@ -154,7 +154,7 @@ class HomeRepository {
     required List<String> labels
 } ) async {
     List<HttpResponse> response = await homeDataSource.reopenTask(taskId: taskId, labels: labels);
-    if (response.first.data != null && (response[1].status??false)) {
+    if (response.first.data != null) {
       return TaskModel.fromJson(response.first.data);
     }
     else{

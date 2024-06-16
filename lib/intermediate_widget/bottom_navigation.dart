@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:kanban_board/constant/color.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -28,9 +29,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
         style: TabStyle.fixedCircle,
         cornerRadius: 10,
         items:  [
-          const TabItem(
+          TabItem(
             icon: Icons.grid_on,
-            title: 'Tasks',
+            title: AppLocalizations.of(context)!.tasks,
           ),
           TabItem(
             icon: Container(
@@ -42,9 +43,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 child: const Icon(Icons.add,color: Colors.white,)),
             title: '',
           ),
-          const TabItem(
+          TabItem(
             icon: Icons.history,
-            title: 'History',
+            title: AppLocalizations.of(context)!.history,
           ),
         ],
         backgroundColor: AppColors.groupBackgroundColor,

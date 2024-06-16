@@ -6,10 +6,10 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.removeSelectedTaskTag({required int index}) = _RemoveSelectedTaskTag;
   const factory HomeEvent.updateSelectedTaskPriority({required TasksPriority taskPriority}) = _UpdateSelectedTaskPriority;
   const factory HomeEvent.updateSelectedTaskStatus({required TasksStatus tasksStatus}) = _UpdateSelectedTaskStatus;
-  const factory HomeEvent.addNewTask({required String dueDate,required String content, required String description, required VoidCallback? Function() onComplete}) = _AddNewTask;
-  const factory HomeEvent.updateFullTask({required String dueDate,required String content, required String taskId,required String description, required VoidCallback? Function() onComplete}) = _AddFullTask;
-  const factory HomeEvent.addNewComment({required String taskId,required String content, required VoidCallback? Function() onComplete}) = _AddNewComment;
-  const factory HomeEvent.updateComment({required String taskId,required String commentId,required String content, required VoidCallback? Function() onComplete}) = _Updateomment;
+  const factory HomeEvent.addNewTask({required AppLocalizations appLocalization,required String dueDate,required String content, required String description, required VoidCallback? Function() onComplete}) = _AddNewTask;
+  const factory HomeEvent.updateFullTask({required AppLocalizations appLocalization,required String dueDate,required String content, required String taskId,required String description, required VoidCallback? Function() onComplete}) = _AddFullTask;
+  const factory HomeEvent.addNewComment({required AppLocalizations appLocalization,required String taskId,required String content, required VoidCallback? Function() onComplete}) = _AddNewComment;
+  const factory HomeEvent.updateComment({required AppLocalizations appLocalization,required String taskId,required String commentId,required String content, required VoidCallback? Function() onComplete}) = _Updateomment;
   const factory HomeEvent.fetchAllComments({required String taskId, required bool isSyncing,
     required InternetState internetState}) = _FetchAllComments;
   const factory HomeEvent.fetchAllTasks({
@@ -33,6 +33,7 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.reopenTask({required String taskId, required List<String> labels}) = _ReopenTaskTask;
   const factory HomeEvent.startTask({required String taskId, required List<String> labels}) = _StartTask;
   const factory HomeEvent.deleteTask({required String taskId}) = _DeleteTask;
+  const factory HomeEvent.deleteAllTask({required AppLocalizations appLocalization}) = _DeleteAllTask;
   const factory HomeEvent.deleteComment({required String commentId,required String taskId}) = _DeleteComment;
   const factory HomeEvent.sortByDateDescending(String id) = _SortByDateDescending;
   const factory HomeEvent.sortByNameDescending(String id) = _SortByNameDescending;

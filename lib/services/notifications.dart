@@ -66,14 +66,14 @@ class NotificationPlugin {
       'CHANNEL_NAME $taskId',
       icon: 'kanban_board_svgrepo_com',
       enableLights: true,
-      color: Color.fromARGB(255, 255, 0, 0),
-      ledColor: Color.fromARGB(255, 255, 0, 0),
+      color: const Color.fromARGB(255, 255, 0, 0),
+      ledColor: const Color.fromARGB(255, 255, 0, 0),
       ledOnMs: 1000,
       ledOffMs: 500,
       importance: Importance.max,
       priority: Priority.high,
       playSound: true,
-      styleInformation: DefaultStyleInformation(true, true),
+      styleInformation: const DefaultStyleInformation(true, true),
     );
     var iosChannelSpecifics = const DarwinNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(android: androidChannelSpecifics,iOS: iosChannelSpecifics);

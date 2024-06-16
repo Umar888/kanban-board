@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kanban_board/modules/home/models/comments_model.dart';
 import 'package:kanban_board/modules/home/models/tasks_model.dart';
 import 'package:kanban_board/services/extensions/string_extension.dart';
@@ -13,8 +14,8 @@ import 'package:kanban_board/services/notifications.dart';
 import '../../../constant/string_constants.dart';
 import '../../../helpers/internet/internet_cubit.dart';
 import '../../../local_database/database_helper.dart';
-import '../../../multi_board_list.dart';
-import '../../../single_board_list.dart';
+import '../navigation_pages/multi_board_list.dart';
+import '../navigation_pages/single_board_list.dart';
 import '../repository/home_repository.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -367,6 +368,29 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
 
         },
+        deleteAllTask: (_) async {
+          emit(state.copyWith(
+            homeLoadingBlocStatus: HomeLoadingBlocStatus.isLoading,
+          ));
+          List<TaskModel> allTaskUpdatedModel = state.allTasksModel??[];
+
+          for(TaskModel taskModel in allTaskUpdatedModel){
+            bool deleteTask = await homeRepository.deleteTasks(
+                taskId: taskModel.id??""
+            );
+            if(deleteTask){
+              await NotificationPlugin().cancelNotification(int.parse((taskModel.id??"").substring((taskModel.id??"").length -3)));
+              await databaseHelper.deleteTask(taskModel.id??"");
+            }
+
+          }
+          emit(state.copyWith(
+              allTasksModel: [],
+              message: _.appLocalization.all_tasks_deleted_successfully,
+              homeLoadingBlocStatus: HomeLoadingBlocStatus.isSuccess
+          ));
+
+        },
         deleteComment: (_) async {
           List<CommentsModel>? allCommentsUpdatedModel = state.commentModel.map((repo) {
             return repo.copyWith(isUpdating: repo == state.commentModel.firstWhere((e) => e.id == _.commentId));
@@ -541,28 +565,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 emit(state.copyWith(
                   allTasksModel: tasksModel,
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isSuccess,
-                  message: "Task added successfully",
+                  message: event.appLocalization.task_added_success,
                 ));
                 event.onComplete();
               } else {
                 emit(state.copyWith(
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                  message: "Failed to add new task to the local database",
+                  message: event.appLocalization.task_added_fail,
                 ));
                 event.onComplete();
               }
             } else {
               emit(state.copyWith(
                 addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                message: "Failed to add new task. Check internet connectivity",
+                message: event.appLocalization.task_added_internet_fail,
               ));
               event.onComplete();
             }
           } catch (e) {
-            print(e.toString());
             emit(state.copyWith(
               addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-              message: "An error occurred: ${e.toString()}",
+              message: "${event.appLocalization.an_error_occurred}: ${e.toString()}",
             ));
             event.onComplete();
           }
@@ -597,27 +620,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 emit(state.copyWith(
                   allTasksModel: tasksModel,
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isSuccess,
-                  message: "Task updated successfully",
+                  message: event.appLocalization.task_updated_success,
                 ));
                 event.onComplete();
               } else {
                 emit(state.copyWith(
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                  message: "Failed to update task in local database",
+                  message: event.appLocalization.task_updated_fail,
                 ));
                 event.onComplete();
               }
             } else {
               emit(state.copyWith(
                 addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                message: "Failed to update task. Check internet connectivity",
+                message:event.appLocalization.task_updated_internet_fail,
               ));
               event.onComplete();
             }
           } catch (e) {
             emit(state.copyWith(
               addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-              message: "An error occurred: ${e.toString()}",
+              message: "${event.appLocalization.an_error_occurred}: ${e.toString()}",
             ));
             event.onComplete();
           }
@@ -641,27 +664,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 emit(state.copyWith(
                   commentModel: commentsModel,
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isSuccess,
-                  message: "Comment added successfully",
+                  message: event.appLocalization.comment_added_success,
                 ));
                 event.onComplete();
               } else {
                 emit(state.copyWith(
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                  message: "Failed to add new comment to the local database",
+                  message: event.appLocalization.comment_added_fail,
                 ));
                 event.onComplete();
               }
             } else {
               emit(state.copyWith(
                 addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                message: "Failed to add new comment. Check internet connectivity",
+                message: event.appLocalization.comment_added_internet_fail,
               ));
               event.onComplete();
             }
           } catch (e) {
             emit(state.copyWith(
               addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-              message: "An error occurred: ${e.toString()}",
+              message: "${event.appLocalization.an_error_occurred}: ${e.toString()}",
             ));
             event.onComplete();
           }
@@ -684,27 +707,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 emit(state.copyWith(
                   commentModel: commentsModel,
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isSuccess,
-                  message: "Comment updated successfully",
+                  message: event.appLocalization.comment_updated_success,
                 ));
                 event.onComplete();
               } else {
                 emit(state.copyWith(
                   addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                  message: "Failed to update comment in local database",
+                  message: event.appLocalization.comment_updated_fail,
                 ));
                 event.onComplete();
               }
             } else {
               emit(state.copyWith(
                 addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-                message: "Failed to update comment. Check internet connectivity",
+                message: event.appLocalization.comment_updated_internet_fail,
               ));
               event.onComplete();
             }
           } catch (e) {
             emit(state.copyWith(
               addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
-              message: "An error occurred: ${e.toString()}",
+              message: "${event.appLocalization.an_error_occurred}: ${e.toString()}",
             ));
             event.onComplete();
           }

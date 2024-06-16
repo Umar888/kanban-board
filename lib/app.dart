@@ -2,11 +2,17 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kanban_board/modules/home/screens/home_page.dart';
 import 'package:kanban_board/services/shared_preference/shared_preference.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:provider/provider.dart';
+import 'constant/string_constants.dart';
 import 'helpers/internet/internet_cubit.dart';
+import 'l10n/l10n.dart';
 import 'modules/home/bloc/home_bloc.dart';
+import 'services/providers/locale_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class App extends StatelessWidget {
@@ -25,7 +31,14 @@ class App extends StatelessWidget {
           create: (context) => HomeBloc(),
         ),
       ],
-      child: const AppView()
+      child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider<LocaleProvider>(create: (_) => LocaleProvider()),
+          ],
+          builder: (context,child) {
+          return const AppView();
+        }
+      )
     );
   }
 }
@@ -56,10 +69,40 @@ class _AppViewState extends State<AppView> with WidgetsBindingObserver {
 
   Future<void> getLocalTime() async {
     int localTime = await sharedPreference.readInt("localTime");
-    print("Local time retrieved: $localTime");
     if (localTime > 0) {
       homeBloc.add(HomeEvent.addCurrentTimeStampToAllTasksLocally(savedTime: localTime));
       await sharedPreference.saveInt("localTime", 0);
+    }
+    var langId = await sharedPreference.readString(languageId);
+    if(langId == "de"){
+      if(mounted){
+        final provider = Provider.of<LocaleProvider>(context, listen:false);
+        provider.setLocale(const Locale('de', 'DE'));
+      }
+    }
+    else if(langId == "fr"){
+      if(mounted){
+        final provider = Provider.of<LocaleProvider>(context, listen:false);
+        provider.setLocale(const Locale('fr', 'FR'));
+      }
+    }
+    else if(langId == "it"){
+      if(context.mounted){
+        final provider = Provider.of<LocaleProvider>(context, listen:false);
+        provider.setLocale(const Locale('it', 'IT'));
+      }
+    }
+    else if(langId == "es"){
+      if(mounted){
+        final provider = Provider.of<LocaleProvider>(context, listen:false);
+        provider.setLocale(const Locale('es', 'ES'));
+      }
+    }
+    else{
+      if(mounted){
+        final provider = Provider.of<LocaleProvider>(context, listen:false);
+        provider.setLocale(const Locale('en', 'US'));
+      }
     }
   }
 
@@ -79,15 +122,26 @@ class _AppViewState extends State<AppView> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return OverlaySupport.global(
-      child: MaterialApp(
-        navigatorKey: navigatorKey,
-        scaffoldMessengerKey: scaffoldMessengerKey,
-        locale: const Locale("en"),
-        debugShowCheckedModeBanner: false,
-        home: const HomePage(),
-      ),
-    );
+
+          final provider = Provider.of<LocaleProvider>(context);
+
+          return OverlaySupport.global(
+            child: MaterialApp(
+              navigatorKey: navigatorKey,
+              scaffoldMessengerKey: scaffoldMessengerKey,
+              locale: provider.getLocale,
+              supportedLocales: L10n.all,
+              localizationsDelegates:  const [
+                AppLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate
+              ],
+              debugShowCheckedModeBanner: false,
+              home: const HomePage()
+            ),
+          );
+
   }
 }
 
