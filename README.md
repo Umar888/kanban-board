@@ -83,6 +83,23 @@ Once the device connected successfully, then click on play button at top
 
 Here is the screen recording of the application to show how application will work.
 
+# Part 1:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/e5025efc-04a1-4890-9055-6edfaead89f5
+
+# Part 2:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/48517cc4-f033-4c27-b787-fb16a27b10be
+
+
+# Part 3:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/e9096b6c-0f80-4048-8f2e-085493d4ae08
+
+# Part 4:
 
 
 
