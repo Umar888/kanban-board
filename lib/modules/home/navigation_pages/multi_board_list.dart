@@ -397,8 +397,8 @@ class _MultiBoardListState extends State<MultiBoardList> {
                     groupConstraints: const BoxConstraints.tightFor(width: 260),
                     config: config,
                   ):
-                  const Center(child: Text("No tasks add yet",
-                  style: TextStyle(
+                  Center(child: Text(AppLocalizations.of(context)!.no_tasks_add_yet,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.w500
