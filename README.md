@@ -99,7 +99,30 @@ https://github.com/Umar888/kanban-board/assets/44860615/48517cc4-f033-4c27-b787-
 
 https://github.com/Umar888/kanban-board/assets/44860615/e9096b6c-0f80-4048-8f2e-085493d4ae08
 
+
 # Part 4:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/f613e367-7e7c-489d-af19-d61e972f0771
+
+
+# Part 5:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/828fc87f-d2af-4d4f-9b14-e8d949b9dae5
+
+
+# Part 6:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/bf19ea05-57d4-4a92-aa54-d0eb3882e85c
+
+
+# Part 7:
+
+
+https://github.com/Umar888/kanban-board/assets/44860615/64014c07-f2e9-4e08-b73b-eb5311a1592b
+
 
 
 
