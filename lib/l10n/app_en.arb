@@ -111,7 +111,8 @@
                   "all_tasks_deleted_successfully": "All tasks deleted successfully",
                   "delete_all_tasks": "Delete All Tasks",
                   "delete_all_tasks_confirmation": "Are you sure, you want to delete all tasks?",
-                  "check_internet": "An error occurred. Please check you internet connection"
+                  "check_internet": "An error occurred. Please check you internet connection",
+"no_tasks_add_yet": "No tasks add yet"
 
 
 }

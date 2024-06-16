@@ -261,12 +261,19 @@ class _MultiBoardListState extends State<MultiBoardList> {
                 controller.addGroup(progressGroup);
                 controller.addGroup(doneGroup);
               }
+              else{
+                controller.removeGroup(todoGroup.id);
+                controller.removeGroup(progressGroup.id);
+                controller.removeGroup(doneGroup.id);
+              }
             },
             builder: (context,state){
               if(state.homeLoadingBlocStatus == HomeLoadingBlocStatus.isSuccess){
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: AppFlowyBoard(
+                  child:
+                  state.allTasksModel.isNotEmpty?
+                  AppFlowyBoard(
                     controller: controller,
                     cardBuilder: (context, group, groupItem) {
                       return AppFlowyGroupCard(
@@ -389,7 +396,13 @@ class _MultiBoardListState extends State<MultiBoardList> {
                     },
                     groupConstraints: const BoxConstraints.tightFor(width: 260),
                     config: config,
-                  ),
+                  ):
+                  const Center(child: Text("No tasks add yet",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500
+                  ),),),
                 );
               }
               else{

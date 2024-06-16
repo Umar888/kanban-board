@@ -128,6 +128,8 @@
                                 "all_tasks_deleted_successfully": "Alle Aufgaben wurden erfolgreich gelöscht",
                                 "delete_all_tasks": "Alle Aufgaben löschen",
                                 "delete_all_tasks_confirmation": "Sind Sie sicher, dass Sie alle Aufgaben löschen möchten?",
-                                "check_internet": "Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung."
+                                "check_internet": "Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung.",
+                                "no_tasks_add_yet": "Noch keine Aufgaben hinzugefügt"
+
 
 }

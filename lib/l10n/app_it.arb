@@ -109,6 +109,7 @@
       "all_tasks_deleted_successfully": "Tutti i compiti sono stati eliminati correttamente",
       "delete_all_tasks": "Elimina tutti i compiti",
       "delete_all_tasks_confirmation": "Sei sicuro di voler eliminare tutti i compiti?",
-      "check_internet": "Si è verificato un errore. Controlla la connessione Internet."
+      "check_internet": "Si è verificato un errore. Controlla la connessione Internet.",
+  "no_tasks_add_yet": "Ancora nessun compito aggiunto"
 
 }

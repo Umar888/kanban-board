@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:kanban_board/intermediate_widget/kanban_board_ui/kanban_board_ui.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,13 +8,11 @@ import 'package:kanban_board/constant/string_constants.dart';
 import 'package:kanban_board/intermediate_widget/count_up_timer/count_up_timer.dart';
 import 'package:kanban_board/modules/home/models/tasks_model.dart';
 import 'package:kanban_board/modules/home/widgets/task_item.dart';
-import 'package:kanban_board/services/extensions/string_extension.dart';
 import 'package:kanban_board/services/providers/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_down_button/pull_down_button.dart';
 import '../../../constant/color.dart';
 import '../../../helpers/internet/internet_cubit.dart';
-import '../../../services/debouncer.dart';
 import '../bloc/home_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../screens/home_detail.dart';
@@ -112,93 +109,97 @@ class _TaskCardState extends State<TaskCard> {
             builder: (context,internetState) {
             return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context,state){
-                  TaskModel taskModel= state.allTasksModel.where((e) => e.id == widget.item.taskId).toList().first;
-                  List<String> taskLabels = taskModel.labels??[];
-                  if (taskLabels.first == inProgressStatusId) {
-                    print(" : ${taskLabels.last}");
-                    if(taskLabels.last.contains("play")){
-                      _timerController.start(startFromSeconds: int.parse(taskLabels[taskLabels.length-2].replaceAll("ztimer-", "")));
+                  if(state.allTasksModel.isNotEmpty){
+                    TaskModel taskModel= state.allTasksModel.where((e) => e.id == widget.item.taskId).toList().first;
+                    List<String> taskLabels = taskModel.labels??[];
+                    if (taskLabels.first == inProgressStatusId) {
+                      print(" : ${taskLabels.last}");
+                      if(taskLabels.last.contains("play")){
+                        _timerController.start(startFromSeconds: int.parse(taskLabels[taskLabels.length-2].replaceAll("ztimer-", "")));
+                      }
+                      else{
+                        _timerController.setDuration(seconds: int.parse(taskLabels[taskLabels.length-2].replaceAll("ztimer-", "")));
+                      }
                     }
-                    else{
-                      _timerController.setDuration(seconds: int.parse(taskLabels[taskLabels.length-2].replaceAll("ztimer-", "")));
-                    }
-                  }
-
-                  return GestureDetector(
-                    onTap: () async {
-                      widget.homeBloc.add(const HomeEvent.syncDataInServer());
-                      await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeDetail(taskId: widget.item.taskId)
-                          )
-                      );
-                      // widget.homeBloc.add(const HomeEvent.syncDataInServer());
-                     widget.homeBloc.add(HomeEvent.fetchAllTasks(requiredReload: false,internetState: internetState));
-                    },
-                    child: Card(
-                      color: Colors.white,
-                      elevation: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildHeader(context),
-                            const SizedBox(height: 5),
-                            Row(
+                    return GestureDetector(
+                      onTap: () async {
+                        widget.homeBloc.add(const HomeEvent.syncDataInServer());
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeDetail(taskId: widget.item.taskId)
+                            )
+                        );
+                        // widget.homeBloc.add(const HomeEvent.syncDataInServer());
+                        widget.homeBloc.add(HomeEvent.fetchAllTasks(requiredReload: false,internetState: internetState));
+                      },
+                      child: Card(
+                          color: Colors.white,
+                          elevation: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                _buildHeader(context),
+                                const SizedBox(height: 5),
+                                Row(
+                                  children: [
+                                    Text(
+                                      widget.item.title,
+                                      maxLines: 1,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    if(widget.item.groupId == inProgressStatusId)
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10.0),
+                                        child: CountTimer(
+                                          format: CountTimerFormat.hoursMinutesSeconds,
+                                          enableDescriptions: false,
+                                          spacerWidth: 1,
+                                          timeTextStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 11
+                                          ),
+                                          colonsTextStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 10
+                                          ),
+                                          controller: _timerController,
+                                        ),
+                                      ),
+
+                                  ],
+                                ),
+                                const SizedBox(height: 5),
                                 Text(
-                                  widget.item.title,
-                                  maxLines: 1,
+                                  widget.item.subtitle,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
                                   ),
                                 ),
-                                const Spacer(),
-                                if(widget.item.groupId == inProgressStatusId)
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: CountTimer(
-                                      format: CountTimerFormat.hoursMinutesSeconds,
-                                      enableDescriptions: false,
-                                      spacerWidth: 1,
-                                      timeTextStyle: const TextStyle(
-                                          color: Colors.black,
-                                        fontSize: 11
-                                      ),
-                                      colonsTextStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 10
-                                      ),
-                                      controller: _timerController,
-                                    ),
-                                  ),
-
+                                if (widget.item.tag.isNotEmpty) const SizedBox(height: 5),
+                                if (widget.item.tag.isNotEmpty) _buildTags(),
+                                const SizedBox(height: 5),
+                                _buildFooter(localeProvider),
                               ],
                             ),
-                            const SizedBox(height: 5),
-                            Text(
-                              widget.item.subtitle,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.black54,
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            if (widget.item.tag.isNotEmpty) const SizedBox(height: 5),
-                            if (widget.item.tag.isNotEmpty) _buildTags(),
-                            const SizedBox(height: 5),
-                            _buildFooter(localeProvider),
-                          ],
-                        ),
-                      )
-                    ),
-                  );
+                          )
+                      ),
+                    );
+                  }
+                  else{
+                    return const SizedBox.shrink();
+                  }
               }
             );
           }

@@ -109,6 +109,7 @@
       "all_tasks_deleted_successfully": "Todas las tareas se eliminaron con éxito",
       "delete_all_tasks": "Eliminar todas las tareas",
       "delete_all_tasks_confirmation": "¿Está seguro de que desea eliminar todas las tareas?",
-      "check_internet": "Ocurrió un error. Por favor, verifique su conexión a Internet"
+      "check_internet": "Ocurrió un error. Por favor, verifique su conexión a Internet",
+  "no_tasks_add_yet": "No se han añadido tareas todavía"
 
 }

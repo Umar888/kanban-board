@@ -775,7 +775,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   }
   Future<void> _selectDateTime(BuildContext context, LocaleProvider localeProvider) async {
     final DateTime now = DateTime.now();
-    final DateTime firstDate = now.add(const Duration(days: 0));
+    final DateTime firstDate = now.add(const Duration(minutes: 5));
 
     Locale locale = localeProvider.getLocale ?? const Locale("en", "US");
     print("Using locale: ${locale.toString()}");
@@ -793,7 +793,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
     if (pickedDate != null && context.mounted) {
       final TimeOfDay? pickedTime = await showTimePicker(
         context: context,
-        initialTime: TimeOfDay.fromDateTime(now),
+        initialTime: TimeOfDay.fromDateTime(firstDate),
       );
 
       if (pickedTime != null) {

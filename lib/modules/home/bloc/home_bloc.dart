@@ -386,6 +386,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
           emit(state.copyWith(
               allTasksModel: [],
+              commentModel: [],
               message: _.appLocalization.all_tasks_deleted_successfully,
               homeLoadingBlocStatus: HomeLoadingBlocStatus.isSuccess
           ));
@@ -583,6 +584,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               event.onComplete();
             }
           } catch (e) {
+            print(e.toString());
             emit(state.copyWith(
               addHomeLoadingBlocStatus: AddHomeLoadingBlocStatus.isFail,
               message: "${event.appLocalization.an_error_occurred}: ${e.toString()}",
