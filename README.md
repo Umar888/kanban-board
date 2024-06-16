@@ -41,22 +41,28 @@ Open Android Studio and go to settings
 
 <img width="291" alt="Screenshot 2024-06-16 at 1 50 32 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/88ca3599-ccd3-4efd-95b2-31b6208f3e47">
 
+
 In Settings, go to Languages and Frameworks -> Flutter
 
 <img width="970" alt="Screenshot 2024-06-16 at 1 51 42 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/c2410f0a-6357-4f7f-97ae-4b9a83ef309a">
+
 
 In Flutter, Click on Flutter SDK Path and add path of downloaded flutter SDK and Click OK
 
 <img width="730" alt="Screenshot 2024-06-16 at 1 52 48 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/5c1476e5-39de-4339-9752-ea141b4892c2">
 
+
 Then click on tools -> Flutter -> Flutter Clean
+
 <img width="547" alt="Screenshot 2024-06-16 at 1 53 22 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/138e269f-2986-46fd-bbe6-b0051abac007">
+
 
 After Cleaning complete, Then click on tools -> Flutter -> Flutter Pub Get
 
 After executing complete, open the terminal from Android Studio 
 
 <img width="994" alt="Screenshot 2024-06-16 at 1 55 47 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/655f91a5-5a81-478b-aad3-cf996f0e94aa">
+
 
 And Run following command
 
@@ -73,12 +79,16 @@ Once the device connected successfully, then click on play button at top
 <img width="307" alt="Screenshot 2024-06-16 at 1 59 27 PM" src="https://github.com/Umar888/kanban-board/assets/44860615/b5329d4f-7747-4205-af68-7ebc8f2b0e82">
 
 
+## Video Recording:
+
+Here is the screen recording of the application to show how application will work.
 
 
 
 
 
-
+If you need any further assistant please direcly reach me out at: +923330431497
+or email me at: umarghaffar88@gmail.com
 
 
 For help getting started with Flutter development, view the
